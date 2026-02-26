@@ -27,6 +27,7 @@ pipeline{
                 sudo docker tag ${DOCKER_IMAGE} ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:latest
                 """
             }
+        }
             stage('docker image'){
                 steps{
                     sh 'sudo docker images'
