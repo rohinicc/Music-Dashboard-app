@@ -74,10 +74,12 @@ pipeline{
                     sudo docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${VERSION}
                     sudo docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:latest
                     """
+                    
                 }
             }
             }
-            }
+            
 
         }
-    }
+}
+    
