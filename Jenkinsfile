@@ -68,7 +68,7 @@ pipeline{
             }
             stage('push docker image to dockerhub'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred',usernameVariable:'${DOCKERHUB_USERNAME}',passwordVariable:'${DOCKERHUB_PASSWORD}')]){
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred',usernameVariable:'DOCKERHUB_USERNAME',passwordVariable:'DOCKERHUB_PASSWORD')]){
                     sh """
                     echo ${DOCKERHUB_PASSWORD} | sudo docker login -u ${DOCKERHUB_USERNAME} --password-stdin
                     sudo docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${VERSION}
@@ -78,8 +78,7 @@ pipeline{
                 }
             }
             }
-            
+            }
 
         }
-}
     
