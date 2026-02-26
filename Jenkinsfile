@@ -49,5 +49,21 @@ pipeline{
                 }
                 
             }
+            stage('Run docker container'){
+                steps{
+                    sh 'sudo docker run -it -d --name ${CONTAINER_NAME} -p ${CONTAINER_PORT}:${REQUEST_PORT} ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:latest'
+                }
+                post{
+                    always{
+                        echo 'container is running'
+                    }
+                    success{
+                        echo 'container is running successfully'
+                    }
+                    faliure{
+                        echo 'falied to run a container'
+                    }
+                }
+            }
         }
     }
