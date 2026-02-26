@@ -60,8 +60,8 @@ pipeline{
                     success{
                         echo 'container is running successfully'
                     }
-                    faliure{
-                        echo 'falied to run a container'
+                    failure{
+                        echo 'failed to run a container'
                     }
                 }
             }
