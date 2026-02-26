@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        DOCKER_IMAGE='musicApp'
+        DOCKER_IMAGE = 'musicApp'
     }
     stages{
         stage('docker version'){
