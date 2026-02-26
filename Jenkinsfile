@@ -8,6 +8,7 @@ pipeline{
         CONTAINER_NAME = 'app'
         CONTAINER_PORT = '8003'
         REQUEST_PORT = '80'
+        DOCKERHUB_CRED ='dockerhub-cred'
     }
     stages{
         stage('docker version'){
@@ -65,6 +66,18 @@ pipeline{
                     }
                 }
             }
-            
+            stage('push docker image to dockerhub'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred',usernameVariable:'${DOCKERHUB_USERNAME}',passwordVariable:'${DOCKERHUB_PASSWORD}')]){
+                    sh """
+                    echo ${DOCKERHUB_PASSWORD} | sudo docker login -u ${DOCKERHUB_USERNAME} --password-stdin
+                    sudo docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${VERSION}
+                    sudo docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:latest
+                    """
+                }
+            }
+            }
+            }
+
         }
     }
