@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        label 'worker_node'
+    }
     environment{
         DOCKER_IMAGE = 'musicapp'
         DOCKERHUB_USERNAME = 'rohinicc'
