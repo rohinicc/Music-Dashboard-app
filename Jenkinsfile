@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        label 'worker_node'
+        label 'slave_node'
     }
     environment{
         DOCKER_IMAGE = 'musicapp'
