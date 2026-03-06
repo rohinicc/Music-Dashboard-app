@@ -6,7 +6,7 @@ pipeline{
         DOCKERHUB_REPO = 'music-dashboard-app'
         VERSION = '$BUILD_ID'
         CONTAINER_NAME = 'app'
-        CONTAINER_PORT = '8003'
+        CONTAINER_PORT = '8085'
         REQUEST_PORT = '80'
         DOCKERHUB_CRED ='dockerhub-cred'
     }
